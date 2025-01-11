@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        array.map(item=>
+       {  return
+         (
+            <p>{item.name}</p>
+            <img src={item.flag} alt="">
+            <p>{item.currency}</p>
+            <p>{item.capital}</p>
+        )})
+    </div>
+</body>
+<script>
+    const array=[
+    {
+        name:`Bangladesh`,
+        currency:`BDT`,
+        flag:`bangladesh.jpeg`,
+        capital:`Dhaka`
+    },
+    {
+        name:`Pakistan`,
+        currency:`PKR`,
+        flag:`pakistan.jpeg`,
+        capital:`Islamabad`
+    },
+    {
+        name:`SriLanka`,
+        currency:`LKR`,
+        flag:`srilanka.jpeg`,
+        capital:`Colombo`
+    },
+    {
+        name:`Nepal`,
+        currency:`NPR`,
+        flag:`nepal.jpeg`,
+        capital:`Kathmandu`
+    },
+    {
+        name:`Maldives`,
+        currency:`MVR`,
+        flag:`maldives.jpeg`,
+        capital:`Male`
+    },
+]
+</script>
+</html>

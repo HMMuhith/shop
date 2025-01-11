@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/tailwindcss">
+    @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+        }
+      </style>
+  <style>
+    @keyframes slide {
+      from {
+        transform: translateX(50px);
+      }
+
+      to {
+        transform: translateX(0px);
+      }
+    }
+
+    .transition {
+      animation: slide 10s ease-in infinite;
+      border: 2px solid red;
+      border-radius: 6px;
+      margin-top: 24px;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            slide: {
+              '0%,100%': { transform: 'rotate(-14deg)' },
+              '50%': { transform: 'rotate(0deg)' }
+            },
+            rotate: {
+              '0%': { transform: 'translate(0px,0px) ' },
+              '25%': { transform: 'translate(200px,0px)' },
+              '50%': { transform: 'translate(200px,200px)' },
+              '100%': { transform: 'translate(0px,200px)' }
+            },
+            moves: {
+              '0%': { transform: 'rotate(0)' },
+              '100%': { transform: 'rotate(360deg)' }
+            }
+          },
+          animation: {
+            spin_slow: 'spin 1s linear infinite',
+            slide: 'slide 5s ease in',
+            rotate: 'rotate 3s linear infinite',
+            moves: 'moves 1s linear infinite'
+          },
+          translate: {
+            '4.25': '17rem',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="w-full border-2 border-green-800 ">
+    <div class="flex border-solid border-2 border-red-600 justify-start items-start bg-gradient-300">
+      <div
+        class="h-40 w-40 border-x-transparent animate-spin_slow mt-6 rounded-full  border-y-orange-700 border-solid border-4 ">
+      </div>
+      <button
+        class="w-40 h-12 mt-6  ml-40 bg-blue-600 hover:bg-blue-800 cursor-pointer text-white text-lg font-bold active:bg-cyan-600  border-solid rounded ">Button</button>
+      <!-- <div class="border-solid border-2 border-sky-600 ml-20 hover:translate cursor-pointer ">Animation</div> -->
+      <div class="transition">Animation</div>
+    </div>
+
+    <div class="m-10 w-[17.5rem] h-[17.5rem] mb-10 border box-border border-slate-300">
+      <div class="w-[5rem] h-[5rem] animate-rotate bg-green-600 m-0 p-0"></div>
+    </div>
+    <div class="m-14 w-[17.5rem] h-[17.5rem]  border rounded-full  border-slate-300">
+      <div class="w-[5rem] h-[5rem] animate-moves rounded-full bg-green-600 "></div>
+    </div>
+  
+    <div class="mt-16 mb-16 box-border">
+      <div class=" flex  flex-col content-end border-solid border-2 border-orange-600 items-center h-[30rem]  gap-1 ">
+        <div class="bg-sky-700 flex justify-center items-center text-5xl text-white    h-28 w-28">1</div>
+        <div class="bg-green-600 flex justify-center items-center text-5xl text-white h-28 w-28">2</div>
+        <div class="bg-red-600 flex justify-center items-center text-5xl text-white h-28 w-28">3</div>
+        <div class="bg-indigo-600 flex justify-center items-center text-5xl text-white h-28 w-28">4</div>
+        <div class="bg-teal-600 flex justify-center items-center text-5xl text-white h-28 w-28">5</div>
+       
+      </div>
+
+    </div>
+
+    <div class="flex justify-center items-center">
+      <div class="grid w-[35rem] h-[50rem] mb-20 items-end border border-black ">
+
+        <div class="w-[3rem] h-[3rem]  bg-red-700"></div>
+        <div class="w-[3rem] h-[3rem]  bg-green-700"></div>
+        <div class="w-[3rem] h-[3rem]  bg-yellow-700"></div>
+        <div class="w-[3rem] h-[3rem]  bg-orange-700"></div>
+        <div class="w-[3rem] h-[3rem]  bg-blue-700"></div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
