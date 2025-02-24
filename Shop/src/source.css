@@ -1,0 +1,59 @@
+.parent{
+  width: 90%;
+  height: 50px;
+  position: relative;
+  top: 20px;
+  border: 1px solid rgb(236, 230, 230);
+  margin: auto;
+  border-radius: 4px;
+  overflow: hidden;
+gap: 2px;
+ }
+ @keyframes scroll{
+  from{
+      transform: translateX(0px);
+  }
+to{
+transform: translateX(-4820px);
+}
+
+ }
+ 
+.children{
+  width: 600px;
+  height: 50px;
+  background-color: aqua;
+position: absolute;
+left: 4220px;
+display: flex;
+justify-content: center;
+align-items: center;
+  animation: scroll 36s linear  infinite;
+
+}
+
+.children1 {
+  animation-delay: calc(36s / 8 * (8 - 1) * -1) ;
+ }
+ .children2 {
+  animation-delay: calc(36s /8 * (8 - 2) * -1);
+ }
+ .children3 {
+  animation-delay: calc(36s / 8 * (8 - 3) * -1);
+ }
+ .children4 {
+  animation-delay: calc(36s /8 * (8 - 4) * -1) ;
+ }
+ .children5 {
+  animation-delay: calc(36s / 8 * (8 - 5) * -1);
+ }
+
+ .children6 {
+  animation-delay:  calc(36s / 8 * (8 - 6) * -1) ;
+ }
+ .children7 {
+  animation-delay: calc(36s / 8 * (8 - 7) * -1) ;
+ }
+ .children8 {
+  animation-delay: calc(36s / 8 * (8 - 8) * -1) ;
+ }
