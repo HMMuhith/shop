@@ -5,7 +5,7 @@ const Pagination = ({pages,page,keyword}) => {
   console.log([...Array(pages).keys()])
   return (
     <>
-    <div class="flex space-x-1">
+    <div className="flex space-x-1">
 { [...Array(pages).keys()].map((pages)=>
   
      <NavLink key={pages+1} to={keyword? `/search/${keyword}/page/${pages+1}`:`/page/${pages+1}`} className={({isActive})=>isActive? pages+1===page :''}>

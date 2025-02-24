@@ -4,6 +4,7 @@ import multer from "multer";
 import mongoose from "mongoose";
 import Auth,{Admin} from "./auth.js";
 
+
 const router2=express.Router()
 
 const fileStorage=multer.diskStorage({
@@ -42,6 +43,7 @@ router2.post('/',upload.single('image'), async(req,res)=>{
    return res.send(result)
 
 })
+
 
 router2.delete('/:productID',async(req,res)=>{
     const proid=req.params.productID

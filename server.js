@@ -8,6 +8,8 @@ import router4 from './order.js'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
+import session from 'express-session'
+import ConnectMongoDBSession from 'connect-mongodb-session'
 
 dotenv.config()
 
@@ -20,10 +22,25 @@ const app = express()
 const port = 8000
 const hostname = `127.0.0.1`
 const __dirname=path.resolve()
+const MongoDBStore=ConnectMongoDBSession(session)
+const store=new MongoDBStore({
+    uri:mongoURL,
+    collection:'sessions'
+})
+
 
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+
+app.use(session(
+    {
+    secret:process.env.SESSION_KEY,
+    resave:false,
+    saveUninitialized:false,
+    store
+}))
+
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin','http://localhost:5173')
     res.setHeader('Access-Control-Allow-Headers','X-Requested-With, X-HTTP-Method-Override,Origin,Authorization,Content-Type, Accept')
@@ -31,6 +48,9 @@ app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE,OPTIONS')
     next()
 })
+
+
+
 app.use('/shop/user',router1 )
 
 app.use('/shop/product',router2)
@@ -41,7 +61,7 @@ app.use('/shop/cart',router3)
 
 app.use('/shop/order',router4)
 
-app.use('/Shop/public/BackendImage',express.static(path.join(__dirname,'BackendImage')))
+app.use('/Shop/public/BackendImage',express.static(path.join(__dirname,'public','BackendImage')))
 
 
 if(process.env.NODE_ENV==='production'){

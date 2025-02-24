@@ -7,10 +7,12 @@ import { Provider } from 'react-redux'
 import Store from './store.jsx';
 import { HelmetProvider } from 'react-helmet-async';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
+<>
   <Provider store={Store}>
     <Theme>
       <PayPalScriptProvider>
@@ -20,6 +22,8 @@ root.render(
       </PayPalScriptProvider>
     </Theme>
   </Provider>
+  <ToastContainer/>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

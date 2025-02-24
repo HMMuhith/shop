@@ -28,5 +28,6 @@ const userprofileschema=new Schema({
 )
 
 userprofileschema.plugin(mongooseUniqueValidator)
+
 const UserProfile=mongoose.model('users',userprofileschema)
 export default UserProfile

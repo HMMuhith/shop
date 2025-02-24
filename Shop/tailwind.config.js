@@ -4,6 +4,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
     extend: {
+      
       fontFamily:{
         poppins:["Poppins"],
         IBM:["IBM Plex Sans"],
@@ -16,11 +17,16 @@ export default {
         // '50%':{transform:'translateX(100px)'},
         // '50%':{transform:'translateX(-1200px)'},
         // '75%':{transform:'translateX(1200px)'}
+      },
+      notify:{
+'0%':{transform:'translateX(0%)'},
+'100%':{transform:'translateX(20%)'}
       }
     },
       animation:{
       cherry:'cherry 5s linear  infinite',
-      spin_load:'spin 1s linear infinite'
+      spin_load:'spin 1s linear infinite',
+      notify:'notify 2s linear .5s forwards'
     }
     ,
     screens:{
@@ -29,6 +35,9 @@ export default {
       'lg':'1024px',
       'xl':'1280px',
       '2xl':'1536px'},
+      colors:{
+        'blur':'rgba(0,0,0,0.5);'
+      }
     },
   },
   plugins: [],

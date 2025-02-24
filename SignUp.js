@@ -242,6 +242,9 @@ router1.post('/login', async (req, res) => {
                     maxAge:30*24*60*60*1000
                 })
                 
+                req.session.user_id=user._id
+                // req.session.save(err=>{throw new err })
+               
                 res.status(200).json({ Success: true, Name: user.Name, email:user.email, id: user.id, isAdmin:user.isAdmin, token: `Bearer ${token}` })
 
             })
@@ -258,7 +261,9 @@ router1.post('/logout',(req,res)=>{
         httpOnly:true,
         expires:new Date(0)
     })
-    return res.status(200).json({Success:'Logeed out successfully'})
+    req.session.user_id=null
+    req.session.destroy()
+    return res.status(200).json({Success:'Logged out successfully'})
 })
 
 router1.delete('/profiles/:id', Admin, async (req, res) => {

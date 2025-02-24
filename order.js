@@ -1,10 +1,13 @@
 import express from "express";
 import OrderList from "./order-model.js";
 import Auth, { Admin } from "./auth.js";
+import fs from 'fs'
+import path from "path";
+import doc from "pdfkit";
 
 const router4 = express.Router()
 const paypalclient_id = `tdydytdyyd`
-
+const __dirname=path.resolve()
 router4.post('/',Auth,async (req, res) => {
     const {orderItems,shipping, payment_method, delivery_price, items_price, tax_price, total_price
     } = req.body
@@ -86,6 +89,26 @@ router4.get('/:orderID', async (req, res) => {
     try {
         const response = await OrderList.findById(req.params.orderID).populate('user','id Name email')
         res.status(200).json(response)
+
+        const invoicename=`invoice- ${req.params.orderID}+ .pdf`
+        const invoicepath=path.join(__dirname,'Document',invoicename)
+        // fs.readFile(invoicepath,(err,data)=>{
+        //     if (err) throw err
+        //     res.setHeader('Content-Type','application/pdf')
+        //     res.setHeader('Content-Disposition','attachment;filename="'+invoicename+'" ')
+        //     res.send(data)
+        // })
+        // const file=fs.createReadStream(invoicepath)
+        res.setHeader('Content-Type','application/pdf')
+            res.setHeader('Content-Disposition','attachment;filename="'+invoicename+'" ')
+            file.pipe(res)
+            doc.pipe(fs.createWriteStream(invoicepath))
+            doc.pipe(res)
+            doc.fontSize(26).text('Invoice',{
+                underline:true
+            })
+            doc.text('--------------------')
+            doc.end()
     }
     catch (err) {
         res.status(200).json(`message:${err}`)
