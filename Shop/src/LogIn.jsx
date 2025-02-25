@@ -27,7 +27,8 @@ const [user, setUser] = useState({
 
 const [status,setstatus]=useState({type:''})
 const [error, setError] = useState({
-  email: '',
+  emailempty: '',
+  emailat:'',
   password: '',
 
 })
@@ -56,15 +57,24 @@ const submit = async (e) => {
   e.preventDefault()
 
   if (validator.isEmpty(user.email)) {
-    return setError({ ...error, email: `Email field required` })
+    return setError({ ...error, emailempty: `Email field required` })
   }
- if(!validator.isEmail(user.email)){
-  return setError({...error,email:`invalid email`})
- }
 
+ setError({...error,email:''})
+
+
+
+ if(!validator.isEmail(user.email)){
+  return setError({...error,emailat:`invalid email`})
+ }
+ setError({...error,emailat:''})
   if (validator.isEmpty(user.password)) {
     return setError({ ...error, password: `password field required` })
   }
+
+
+
+  setError({...error,password:''})
   // if (!validator.isEmpty(user.password)) {
   //   return setError({ ...error, password: ''})
   // }
@@ -109,13 +119,13 @@ function failing(){
           <div>
 
             <input type="email"  className='shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="email" onChange={handleUnit} value={user.email} placeholder='Email' required />
-             <span className='text-red-500'>{error.email}</span>
+             {validator.isEmpty(user.email) && <span className='text-red-500'>{error.emailempty}</span> || !validator.isEmail(user.email) && <span className='text-red-500'>{error.emailat}</span>}
            
           </div><br />
           <div>
 
             <input type="password" className='shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="password" onChange={handleUnit} value={user.password} placeholder='Password' required />
-             <span className='text-red-500'>{error.password}</span>
+            {validator.isEmpty(user.password) && <span className='text-red-500'>{error.password}</span>}
           </div><br /><br />
         
           <div className='flex justify-center items-center'>
