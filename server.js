@@ -66,8 +66,11 @@ app.use('/Shop/public/BackendImage',express.static(path.join(__dirname,'public',
 
 if(process.env.NODE_ENV==='production'){
     app.use('*',(req,res,next)=>{
-        res.sendFile(express.static(path.resolve(__dirname,'public','index.html')))
+        res.sendFile(express.static(path.resolve(__dirname,'dist','index.html')))
     })
+    // app.use('*',(req,res,next)=>{
+    //     res.sendFile(express.static(path.resolve(__dirname,'public','index.html')))
+    // })
      
     app.use(express.static(path.join(__dirname,'public')))
 }

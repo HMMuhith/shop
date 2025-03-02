@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import uniqueValidator from 'mongoose-unique-validator'
+
 
 const Schema = mongoose.Schema
 const Cartschema = new Schema({
@@ -71,6 +71,6 @@ Cartschema.methods.clearCart=function(){
     return this.save()
 }
 
-Cartschema.plugin(uniqueValidator)
+
 const CartModel = mongoose.model('bookedcart', Cartschema)
 export default CartModel
