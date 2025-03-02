@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "Dev": "concurrently \" npm run server\" \"cd Shop && npm run dev\" "
+    "Dev": "concurrently \" npm run server\" \"cd Shop && npm run dev\" ",
+    "build":"npm install && npm install --prefix Shop && npm run build"
   },
   "author": "Muhith",
   "license": "ISC",
