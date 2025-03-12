@@ -9,7 +9,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "Dev": "concurrently \" npm run server\" \"cd Shop && npm run dev\" ",
-    "build":"npm install && npm install --prefix Shop && npm run build"
+    "build":"npm install && npm install --prefix Shop && npm run build --prefix Shop"
   },
   "author": "Muhith",
   "license": "ISC",

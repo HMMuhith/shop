@@ -19,7 +19,7 @@ mongoose.connect(mongoURL)
 .then(()=>{console.log(`MongoDB connected`)}) 
 .catch(()=>{console.log(`connection problem`)})
 const app = express()
-const port = 8000
+const port =process.env.PORT || 8000
 const hostname = `127.0.0.1`
 const __dirname=path.resolve()
 const MongoDBStore=ConnectMongoDBSession(session)
@@ -75,7 +75,7 @@ if(process.env.NODE_ENV==='production'){
     app.use(express.static(path.join(__dirname,'public')))
 }
 else{
-app.listen(process.env.PORT || port, () => {
+app.listen( port, () => {
     console.log(`Server running at http://${hostname}:${port}`)
 })
 }
