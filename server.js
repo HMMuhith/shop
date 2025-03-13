@@ -72,7 +72,7 @@ if(process.env.NODE_ENV==='production'){
     //     res.sendFile(express.static(path.resolve(__dirname,'public','index.html')))
     // })
      
-    app.use(express.static(path.join(__dirname,'public')))
+    app.use(express.static(path.join(__dirname,'Shop','public')))
 }
 
 app.listen( port, () => {
