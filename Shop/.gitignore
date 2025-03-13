@@ -9,7 +9,7 @@ lerna-debug.log*
 
 
 
-dist/
+
 *.local
 
 # Editor directories and files
