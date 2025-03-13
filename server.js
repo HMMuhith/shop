@@ -20,7 +20,7 @@ mongoose.connect(mongoURL)
 .catch(()=>{console.log(`connection problem`)})
 const app = express()
 const port =process.env.PORT || 8000
-const hostname = `127.0.0.1`
+
 const __dirname=path.resolve()
 const MongoDBStore=ConnectMongoDBSession(session)
 const store=new MongoDBStore({
@@ -66,7 +66,7 @@ app.use('/Shop/public/BackendImage',express.static(path.join(__dirname,'public',
 
 if(process.env.NODE_ENV==='production'){
     app.use('*',(req,res,next)=>{
-        res.sendFile(express.static(path.resolve(__dirname,'dist','index.html')))
+        res.sendFile(path.resolve(__dirname,'Shop','dist','index.html'))
     })
     // app.use('*',(req,res,next)=>{
     //     res.sendFile(express.static(path.resolve(__dirname,'public','index.html')))
@@ -74,9 +74,9 @@ if(process.env.NODE_ENV==='production'){
      
     app.use(express.static(path.join(__dirname,'public')))
 }
-else{
+
 app.listen( port, () => {
-    console.log(`Server running at http://${hostname}:${port}`)
+    console.log(`Server running at ${port}`)
 })
-}
+
 
