@@ -57,7 +57,7 @@ const Cart = () => {
                                             </th>
 
                                             <td key={item._id} className="px-2 flex justify-center items-center  py-3">
-                                                <img key={item?._id} alt={item?.product_name} className='rounded-md  border-solid border-black' src={item && require(`./BackendImage/${item?.image}`)} width='50px' />
+                                                <img key={item?._id} alt={item?.product_name} className='rounded-md  border-solid border-black' src={`/BackendImage/${item?.image}`} width='50px' />
                                             </td>
 
                                             <td key={item._id} className="px-2  py-3">

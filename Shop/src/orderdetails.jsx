@@ -104,7 +104,7 @@ const paypalError=()=>{
                             <tr className=''>
                               <td key={item._id} className=" w-[3rem] lg:w-[5.5rem]">
                                 <div className='lg:flex flex w-[2.5rem] lg:w-[5rem] ml-0.5 lg:border-none lg:justify-center justify-center items-center lg:items-center'>
-                                  <img key={item?._id} className='lg:rounded-md w-full  lg:w-[3.5rem] rounded-md' src={item && require(`./BackendImage/${item?.image}`)} />
+                                  <img key={item?._id} className='lg:rounded-md w-full  lg:w-[3.5rem] rounded-md' src={`/BackendImage/${item?.image}`} />
                                 </div>
                               </td>
                               <td className='lg:w-48 w-[6.5rem] lg:border-none '>

@@ -6,6 +6,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   
   assetsInclude: ['**/*.JPG',"**/*.PNG"],
-  plugins: [react()],
-  
+  plugins: [react()
+  ],
+  resolve:{
+    extensions:['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
+  },
+  base:''
 })
