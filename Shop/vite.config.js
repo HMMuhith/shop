@@ -8,8 +8,8 @@ export default defineConfig({
   assetsInclude: ['**/*.JPG',"**/*.PNG"],
   plugins: [react()
   ],
-  resolve:{
-    extensions:['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
-  },
-  base:''
+  // resolve:{
+  //   extensions:['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
+  // },
+  // base:'/'
 })

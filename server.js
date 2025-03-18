@@ -63,16 +63,17 @@ app.use('/shop/order',router4)
 
 app.use('/Shop/public/BackendImage',express.static(path.join(__dirname,'public','BackendImage')))
 
+app.use(express.static(path.join(__dirname,'Shop','public')))
 
 if(process.env.NODE_ENV==='production'){
+    app.use(express.static(path.join(__dirname,'Shop','dist')))
+
     app.use('*',(req,res,next)=>{
         res.sendFile(path.resolve(__dirname,'Shop','dist','index.html'))
+        return next()
     })
-    // app.use('*',(req,res,next)=>{
-    //     res.sendFile(express.static(path.resolve(__dirname,'public','index.html')))
-    // })
+    
      
-    app.use(express.static(path.join(__dirname,'Shop','public')))
 }
 
 app.listen( port, () => {
