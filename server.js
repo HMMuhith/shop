@@ -68,9 +68,9 @@ app.use(express.static(path.join(__dirname,'Shop','public')))
 if(process.env.NODE_ENV==='production'){
     app.use(express.static(path.join(__dirname,'Shop','dist')))
 
-    app.use('*',(req,res,next)=>{
+    app.use('*',(req,res)=>{
         res.sendFile(path.resolve(__dirname,'Shop','dist','index.html'))
-        return next()
+        
     })
     
      
