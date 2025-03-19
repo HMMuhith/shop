@@ -1,4 +1,6 @@
 .env
+server.js
+Shop/vite.config.js
 Shop/node_modules/.package-lock.json
 Shop/node_modules/.bin/acorn
 Shop/node_modules/.bin/acorn.cmd

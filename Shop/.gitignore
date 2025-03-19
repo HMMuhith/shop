@@ -12,6 +12,7 @@ lerna-debug.log*
 
 *.local
 dist
+vite.config.js
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

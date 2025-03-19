@@ -12,4 +12,7 @@ export default defineConfig({
   //   extensions:['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
   // },
   // base:'/'
+  server:{
+    port:4000
+  }
 })
