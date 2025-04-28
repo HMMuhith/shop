@@ -36,11 +36,12 @@ const post={
        delivery_price: cart.shipingPrice,
        total_price: cart.totalPrice
 }
-const result=await axios.post('/shop/order',post,{
+const result=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/shop/order`,post,{
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           Authorization: userinfo.token
         },
+        withCredentials:true
       })
        dispatch(ClearCartItems())
 

@@ -4,9 +4,8 @@ import jwt from 'jsonwebtoken'
 const Auth=(req,res,next)=>{
 
    try{
-    //  const Token=req.headers.authorization.split(' ')[1]
-    let Token
-     Token=req.cookies.JWT
+     const Token=req.headers.authorization.split(' ')[1]
+    
     const decoded=jwt.verify(Token,process.env.SECRET_KEY)
     req.user={Name:decoded.Name,id:decoded.id,email:decoded.email,isAdmin:decoded.isAdmin}
     if(!req.user.isAdmin){

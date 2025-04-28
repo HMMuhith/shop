@@ -15,7 +15,7 @@ root.render(
 <>
   <Provider store={Store}>
     <Theme>
-      <PayPalScriptProvider>
+      <PayPalScriptProvider deferLoading={true}>
       <HelmetProvider>
         <App />
       </HelmetProvider>

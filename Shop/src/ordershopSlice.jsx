@@ -23,15 +23,15 @@ export const ordershopSlice = shopSlice.injectEndpoints({
             })
         }),
         payOrder:builder.mutation({
-            query:({details,orderID})=>({
-                url:`/shop/order/${orderID}/pay`,
-                method:'PATCH',
+            query:(orderID,details)=>({
+                url:`/shop/order/${orderID}/deliver`,
+                method:'PUT',
                 body:{...details}
             })
         }),
         getPaypalClientID:builder.query({
             query:()=>({
-                url:`/shop/order/payment`,
+                url:`/shop/payment/paypal`,
 
             })
         }),

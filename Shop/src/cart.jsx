@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import TrashIcon from './TrashIcon'
 import { RemoveCart } from './cartslice'
 import { useDispatch } from 'react-redux'
@@ -8,9 +8,14 @@ import { useDispatch } from 'react-redux'
 
 const Cart = () => {
     const dispatch = useDispatch()
+    const navigate=useNavigate()
     const { cartItems } = useSelector((state) => {
         return state.cart
     })
+    const checkOutHandler=()=>{
+navigate('/login?redirect=/shipping')
+    }
+
     const RemoveHandler = (id) => {
 
         dispatch(RemoveCart(id))
@@ -53,7 +58,7 @@ const Cart = () => {
                                         <tr className="rounded dark:border-gray-700">
 
                                             <th key={item._id} scope="row" className="px-2 py-3 font-medium text-black whitespace-nowrap ">
-                                                <Link to={`/shop/product/${item._id}`} >{item.product_name}</Link>
+                                                <Link to={`/product/${item._id}`} >{item.product_name}</Link>
                                             </th>
 
                                             <td key={item._id} className="px-2 flex justify-center items-center  py-3">
@@ -100,7 +105,7 @@ const Cart = () => {
                                 </h2> <strong className='text-2xl font-bold -mt-2'>৳</strong>
                             </div>
                                 <div className='mt-1.5 ml-8'>
-                                    <button type="button" className='rounded-lg dark:bg-pink-600 py-1 px-1.5 text-white'>Proceed to checkout ➔</button>
+                                    <button type="button" onClick={checkOutHandler} className='rounded-lg dark:bg-pink-600 py-1 px-1.5 text-white'>Proceed to checkout ➔</button>
                                 </div>
                         </div>
                     </div>

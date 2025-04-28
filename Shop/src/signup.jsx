@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { useNavigate,Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate,Link, useLocation } from 'react-router-dom'
 import validator from 'validator'
 import {useSignUpMutation} from './usershopSlice'
 import Success from './success_notification'
 import Fail from './fail_notification'
+import { useSelector } from 'react-redux'
 
 
 const SignUp = () => {
@@ -29,6 +30,24 @@ const SignUp = () => {
   const [status,setstatus]=useState({type:''})
 
   const navigate = useNavigate()
+
+  const {userinfo}=useSelector(store=>store.auth)
+
+  const {search}=useLocation()
+
+const sp=new URLSearchParams(search)
+
+const redirect=sp.get('redirect') || '/'
+
+
+useEffect(()=>{
+  if(userinfo){
+    navigate(redirect)
+  }
+},
+
+[userinfo,redirect]
+)
   const handleUnit = (e) => {
     const value = e.target.value
     const name = e.target.name
@@ -101,22 +120,7 @@ setError({...error,passwordempty:''})
       
     }
   
-  // try {
-  //   const response = await fetch(`${VITE_BACKEND_URL]/user/signup`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(newUser)
-  //   })
-  //   const data = await response.json()
-  //   navigate('/login')
-  //   console.log(data)
-  // }
-
-  // catch (error){ 
-  //   console.log(error)
-  // }
+ 
   function failing(){
     setTimeout(()=>{
       const message=document.getElementById('fail')
@@ -159,7 +163,7 @@ setError({...error,passwordempty:''})
         </div>
 <div className='flex justify-center items-center'>
           <p>
-            Already have an account? <Link to='/login' style={{color:`blue`}}>Login</Link>
+            Already have an account? <Link to={redirect ? `/login?redirect=${redirect}` : `/login`} style={{color:`blue`}}>Login</Link>
           </p>
           </div>
       </form>

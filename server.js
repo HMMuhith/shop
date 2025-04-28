@@ -42,7 +42,7 @@ app.use(session(
 }))
 
 app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin','http://localhost:5173')
+    res.setHeader('Access-Control-Allow-Origin','http://localhost:4000')
     res.setHeader('Access-Control-Allow-Headers','X-Requested-With, X-HTTP-Method-Override,Origin,Authorization,Content-Type, Accept')
     res.setHeader('Access-Control-Allow-Credentials',true)
     res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE,OPTIONS')
@@ -55,13 +55,17 @@ app.use('/shop/user',router1 )
 
 app.use('/shop/product',router2)
 
-app.use(cookieParser())
+app.use(cookieParser()) 
 
 app.use('/shop/cart',router3)
 
 app.use('/shop/order',router4)
 
+app.get('/shop/payment/paypal', (req,res)=>{
+    res.send({client_id:process.env.PAYPAL_CLIENT_ID})
+})
 app.use('/Shop/public/BackendImage',express.static(path.join(__dirname,'public','BackendImage')))
+
 
 app.use(express.static(path.join(__dirname,'Shop','public')))
 

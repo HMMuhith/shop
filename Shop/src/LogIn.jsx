@@ -2,23 +2,23 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation, useNavigate ,NavLink, Link} from 'react-router-dom'
 import validator from 'validator'
-import { useDispatch} from 'react-redux'
+import { useDispatch,useSelector} from 'react-redux'
 import { useLogInMutation } from './usershopSlice'
 import { Credentials } from './authSlice'
 import Success from './success_notification'
 import Fail from './fail_notification'
-import { toast } from 'react-toastify'
+
 
 const LogIn = () => {
   const navigate = useNavigate()
   const dispatch=useDispatch()
-// const [search]=useSearchParams()
+
 const {search}=useLocation()
 const sp=new URLSearchParams(search)
-const redirect=sp.get('redirect') || '/order'
+const redirect=sp.get('redirect') || '/'
 // const isLogin=search.get('redirect')==='login'
 const [login,{isLoading}]=useLogInMutation()
-// const {userinfo}=useSelector(state=>state.auth)
+const {userinfo}=useSelector(state=>state.auth)
 
 const [user, setUser] = useState({
   email: '',
@@ -40,11 +40,11 @@ const handleUnit = (e) => {
  
 }
 
-// useEffect(()=>{
-//   if(userinfo){
-//     navigate(redirect)
-//   }
-// },[navigate,userinfo])
+useEffect(()=>{
+  if(userinfo){
+    navigate(redirect)
+  }
+},[userinfo,redirect])
 
 
 function testify(){
@@ -75,9 +75,7 @@ const submit = async (e) => {
 
 
   setError({...error,password:''})
-  // if (!validator.isEmpty(user.password)) {
-  //   return setError({ ...error, password: ''})
-  // }
+ 
 
   const newUser = {
     email: user.email,
@@ -87,18 +85,15 @@ const submit = async (e) => {
   const response = await login(newUser).unwrap()
 dispatch(Credentials({...response}))
 setstatus({type:'success'})
-// toast.success(`You signed in successfully`)
 testify()
 
-  
+  navigate(redirect)
 }
 
 catch (err){
-  // setError({...error,login:`* Invalid email or password`})
 
  setstatus({type:'fail'})
  
- toast.error(`* Invalid email or password`)
   console.log(err?.data?.message || err?.data)
 }
 }
@@ -135,7 +130,7 @@ function failing(){
           </div><br />
           <div className='flex justify-center items-center'>
           <p>
-            New here? <Link to='/signup' style={{color:`blue`}}>Sign up</Link>
+            New here? <Link to={redirect? `/signup?redirect=${redirect}` :`/signup`} style={{color:`blue`}}>Sign up</Link>
           </p>
           </div>
           

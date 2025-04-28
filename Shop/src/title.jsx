@@ -16,7 +16,7 @@ const Title = ({title,description,keyword}) => {
 
 Title.defaultProps={
     title:'Shop',
-    description:'You can get here your desired gadget here',
+    description:'You can get here your desired gadget ',
     keyword:'Apple iPhone Router'
 }
 export default Title

@@ -14,7 +14,7 @@ const ProductParams = () => {
     const [rating, setrating] = useState()
     const [comment, setcomment] = useState()
     const { productID } = useParams()
-    const { data,isLoading,error } = useGetProductsDetailsQuery(productID)
+    const { data,refetch,isLoading,error } = useGetProductsDetailsQuery(productID)
     const [DeleteItem] = useDeleteProductMutation()
    const dispatch = useDispatch()
 
@@ -26,6 +26,7 @@ const ProductParams = () => {
     const handleAddToCart = (e) => {
         e.preventDefault()
         dispatch(AddCart({ ...data, quantity }))
+        navigate('/cart')
     }
     const deletehandler = async () => {
         if (window.confirm(`Are you sure you want to delete product?`)) {
@@ -47,7 +48,7 @@ const ProductParams = () => {
                 rating,
                 comment
             }
-           const response=await fetch(`${VITE_BACKEND_URL}/shop/product/${productID}/reviews`,{
+           const response=await fetch(`${import.meta.env.VITE_BACKEND_URL}/shop/product/${productID}/reviews`,{
                 method:'POST',
                 body:JSON.stringify(review),
                 headers:{
@@ -57,6 +58,7 @@ const ProductParams = () => {
             })
             const data=await response.json()
             console.log(data)
+            refetch()
         } catch (error) {
             console.log(error)
         }  
@@ -104,6 +106,7 @@ const ProductParams = () => {
                                                     <div className='flex justify-center items-center '>
                                                         <button type="button" disabled={data?.stock === 0} onClick={handleAddToCart} className='bg-black hover:bg-opacity-75 text-white text-base font-semibold py-1 px-28 border border-blue-700 rounded'>Add to cart</button>
                                                     </div>
+                                                    {userinfo?.isAdmin &&(
                                             <div className='flex justify-evenly items-center mt-2'>
                                                             <div className=''>
                                                                 <button className='bg-green-700 hover:bg-opacity-75 text-white text-sm font-semibold py-1 px-12 border rounded' onClick={() => { navigate(`/product/${data?._id}/edit`) }}>Edit</button><br />
@@ -111,7 +114,8 @@ const ProductParams = () => {
                                                             <div className=''>
                                                                 <button className='bg-red-700 hover:bg-opacity-75 text-white text-sm font-semibold py-1 px-10 rounded' onClick={deletehandler}>Delete</button><br />
                                                             </div>
-                                            </div>
+                                            </div>)
+}
                                     </div>
                 </div>
             </div> 

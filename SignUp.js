@@ -203,7 +203,7 @@ router1.post('/adminsign', async (req, res) => {
         createdProfile.password = hash
         const profile = await createdProfile.save()
         return res.status(201).json({ user: profile })
-    })
+    }) 
  
 
 
