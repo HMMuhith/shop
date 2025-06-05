@@ -32,10 +32,10 @@ const Image = () => {
 
                 <div className='lg:flex flex flex-col lg:flex-col my-10 lg:my-10 overflow-hidden lg:overflow-hidden lg:justify-center justify-center items-center lg:items-center  '>
                        
-                            <div className='lg:w-[28rem] lg:h-[32rem] w-[16rem] h-[20rem]  lg:overflow-hidden overflow-hidden  lg:flex flex lg:border border '>
+                            <div className='lg:w-[28rem] lg:h-[32rem] w-[16rem] lg:rounded rounded  h-[20rem]  lg:overflow-hidden overflow-hidden  lg:flex flex lg:border lg:border-slate-300 border-slate-300 border dark:border-none dark:rounded  '>
                               {images.map((url, index) =>
 
-<img style={{transform:`translateX(-${slide*100}%)`}} src={url} alt="" className={`lg:flex flex lg:justify-center justify-center lg:items-center items-center lg:w-full w-full h-full lg:h-full lg:object-contain object-contain`} />
+<img style={{transform:`translateX(-${slide*100}%)`}} src={url} alt="" className={`lg:flex flex dark:lg:rounded-lg lg:justify-center justify-center lg:items-center items-center lg:w-full w-full h-full lg:h-full lg:object-contain object-contain`} />
                                 
                           )}
                             </div>

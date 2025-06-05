@@ -25,10 +25,25 @@ dispatch(Logout())
 
 // dispatch(Logout(userinfo))
 }
+// const toggleMenu=document.getElementById('hamburg')
+// const sideleft=document.getElementById('sideleft')
+// const bar=document.getElementById('bar')
+
+// toggleMenu?.addEventListener('click',()=>{
+//   toggleMenu.classList.toggle('translate-x-full')
+//   bar.classList.toggle('translate-x-0')
+  
+// })
+
+// sideleft?.addEventListener('click', ()=>{
+//   bar.classList.toggle('translate-x-0')
+// })
+
   return (
     <>
-        <div className='sm:mt-2 sm:mr-3 text-xl cursor-pointer active:text-white md:hidden lg:hidden'>
-          <Hamburg click={()=>{setIsOpen(false)}}/>
+        <div id='hamburg' className='sm:mt-2 sm:mr-3 text-xl cursor-pointer active:text-white md:hidden lg:hidden'>
+          <Hamburg click={()=>{setIsOpen(false)}} />
+          
         </div>
     <ul className='lg:flex hidden lg:justify-around lg:items-center lg:h-10 ' >
 
@@ -54,8 +69,8 @@ dispatch(Logout())
       </ul>
    
     
-      <div className={IsOpen?'sm:hidden':'fixed top-10 right-0 h-[31rem] lg:hidden sm:bg-black z-20'}>
-   <div className='mt-2 lg:hidden'>
+      <div id='bar'  className={IsOpen?'sm:hidden':'fixed top-8 right-0 h-[17rem] lg:hidden sm:bg-slate-800 rounded-s-md z-20 '}>
+   <div id='sideleft' className='mt-2 lg:hidden'>
         <Close click={()=>{setIsOpen(!IsOpen)}} />
       </div>
 
@@ -63,19 +78,19 @@ dispatch(Logout())
 
         {userinfo ?null :(
           <li className='lg:hidden  sm:py-1.5 sm:px-6 sm:hover:text-white' >
-          <NavLink to='/signup' className={({isActive})=>!isActive?`text-blue-700 lg:hidden sm:hover:text-white text-md font-semibold font-poppins`:``} > Sign up</NavLink>
+          <NavLink to='/signup' className={({isActive})=>!isActive?`text-blue-800 lg:hidden sm:hover:text-white text-md font-semibold font-poppins`:``} > Sign up</NavLink>
         </li>)}
         {userinfo ? null :(<li className='lg:hidden sm:py-1.5 sm:px-6' >
-          <NavLink to='/login' className={({isActive})=>!isActive?`text-blue-700 lg:hidden sm:hover:text-white text-md font-semibold font-poppins`:``} > Log in</NavLink>
+          <NavLink to='/login' className={({isActive})=>!isActive?`text-blue-800 lg:hidden sm:hover:text-white text-md font-semibold font-poppins`:``} > Log in</NavLink>
         </li>)}
         <li className='lg:hidden sm:hover:text-white sm:py-1.5 sm:px-6' >
-          <NavLink to='/about' className={({isActive})=>!isActive?`text-blue-700 lg:hidden  text-md font-semibold font-poppins`:``} > About</NavLink>
+          <NavLink to='/about' className={({isActive})=>!isActive?`text-blue-800 sm:hover:text-white lg:hidden  text-md font-semibold font-poppins`:``} > About</NavLink>
         {/* </li>
         <li className=' lg:w-8 lg:h-10 sm:w-6 sm:h-8 lg:flex lg:justify-center sm:flex sm:justify-center  lg:items-center sm:items-center py-1.5 pl-9'>
         <CartIcon/> */}
         </li>
         {userinfo?(<li className='py-1.5 pl-6'>
-          <button type='button' className='text-blue-700  lg:hidden hover:text-white text-md font-semibold font-poppins' onClick={logoutHandler}>Logout</button>
+          <button type='button' className='text-blue-800  lg:hidden hover:text-white text-md font-semibold font-poppins' onClick={logoutHandler}>Logout</button>
         </li>) :null}
        </ul> 
        </div>

@@ -28,10 +28,10 @@ useEffect(()=>{
       <div>
         <Checkout step1 step2 step3 />
       </div>
-      <div className='mb-8 font-bold tracking-wide text-2xl mt-2 ml-8 font-poppins underline underline-offset-8 decoration-4 decoration-blue-600'>Payment</div>
+      <div className='mb-8 font-bold tracking-wide lg:text-2xl mt-2 ml-8 sm:ml-2 sm:text-lg font-poppins underline underline-offset-8 decoration-4 text-blue-600 dark:text-white decoration-black dark:decoration-blue-600'>Payment</div>
 
       <div className='grid place-items-center '>
-            <div className='border border-slate-400 shadow-[1px_1px_14px_1px_rgba(0,0,0,0.1)] rounded m-1.5'>
+            <div className='border border-slate-400 dark:border-none dark:bg-zinc-900 shadow-[1px_1px_14px_1px_rgba(0,0,0,0.1)] rounded mt-2.5 mb-20'>
                <div className='text-blue-700 font-semibold text-lg font-PT mt-3 mb-2 pl-3'>Select method</div>
                           <div>
                             <form action="" onSubmit={submit}>

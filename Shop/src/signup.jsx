@@ -132,33 +132,33 @@ setError({...error,passwordempty:''})
   <div flex className=' flex shrink justify-center items-center'>
     <div class=" w-full max-w-xs mt-14 ">
 
-      <form noValidate className='bg-white h-full border-2 border-solid  shadow-[1px_1px_8px_1px_rgba(0,0,0,0.15)] rounded px-8 pt-6 pb-8 mb-4' onSubmit={submit}>
+      <form noValidate className='bg-white h-full dark:bg-zinc-900 dark:border-none border-2 border-solid  shadow-[1px_1px_8px_1px_rgba(0,0,0,0.15)] rounded px-8 pt-6 pb-8 mb-4' onSubmit={submit}>
         <div>
 
-          <input type="text" className='shadow border-black appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="Name" id="" onChange={handleUnit} value={user.Name} placeholder='Name' />
+          <input type="text" className='dark:bg-zinc-600 shadow border-black appearance-none dark:border-none dark:text-white border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="Name" id="" onChange={handleUnit} value={user.Name} placeholder='Name' />
 
 {validator.isEmpty(user.Name) && <span className='text-red-500 text-sm'>{error.NAMEempty}</span> || !validator.isLength(user.Name,{min:2,max:30}) && <span className='text-red-500 text-sm'>{error.NAMEval}</span>}
         </div><br />
         <div>
 
-          <input type="email" className='shadow appearance-none border-black border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="email" id="" onChange={handleUnit} value={user.email} placeholder='Email'  />
+          <input type="email" className='dark:bg-zinc-600 shadow appearance-none dark:border-none dark:text-white border-black border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="email" id="" onChange={handleUnit} value={user.email} placeholder='Email'  />
            {validator.isEmpty(user.email) && <span className='text-red-500 text-sm'>{error.emailempty}</span> || !validator.isEmail(user.email) && <span className='text-red-500 text-sm'>{error.emailat}</span>}
         </div><br />
         <div>
 
-          <input type="password" className='shadow border-black appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="password" id="" onChange={handleUnit} value={user.password} placeholder='Password'  />
+          <input type="password" className='dark:bg-zinc-600 shadow border-black appearance-none dark:border-none dark:text-white border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="password" id="" onChange={handleUnit} value={user.password} placeholder='Password'  />
           {
           validator.isEmpty(user.password) && <span className='text-red-500 text-sm'>{error.passwordempty}</span> || 
           !validator.isLength(user.password,{ min: 4, max: 15}) && <span className='text-red-500 text-sm'>{error.passwordval}</span>}
         </div><br />
         <div>
 
-          <input type="password" className='shadow border-black appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="confirm_password" id="" onChange={handleUnit} value={user.confirm_password} placeholder='Confirm Password'  />
+          <input type="password" className='dark:bg-zinc-600 shadow border-black appearance-none dark:border-none dark:text-white border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="confirm_password" id="" onChange={handleUnit} value={user.confirm_password} placeholder='Confirm Password'  />
           {validator.isEmpty(user.confirm_password) && <span className='text-red-500 text-sm'>{error.confirm_password}</span> || !validator.equals(user.password,user.confirm_password) && <span className='text-red-500 text-sm'>{error.confirm_passwordmatch}</span>}
         </div><br /><br />
         <div className='flex justify-center items-center mb-3'>
 
-          <input type="submit" className='bg-black hover:bg-opacity-75 text-white text-base font-semibold py-1 px-20 cursor-pointer border border-blue-700 rounded' name='submit' value='Sign Up ' />
+          <input type="submit" className='bg-black dark:bg-blue-600 dark:text-white hover:bg-opacity-75   text-white text-base font-semibold py-1 px-20 cursor-pointer border border-blue-700 rounded' name='submit' value='Sign Up ' />
            
         </div>
 <div className='flex justify-center items-center'>

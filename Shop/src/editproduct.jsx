@@ -54,11 +54,11 @@ console.log(data)
 Edit Product
         </div>
         <div className='flex justify-center items-center mt-[2.2rem]'>
-            <form action="" spellCheck='false' className='border rounded border-slate-400 grid shadow-[1px_1px_14px_1px_rgba(0,0,0,0.1)] ' encType="multipart/form-data" >
+            <form action="" spellCheck='false' className='border rounded dark:border-none dark:bg-zinc-800 border-slate-400 grid shadow-[1px_1px_14px_1px_rgba(0,0,0,0.1)] ' encType="multipart/form-data" >
                 <div className='grid place-content-center '>
                     <input type="hidden" name="productID" value={productID} />
                     <div className='mx-2'>
-                        <input className='border border-slate-400 py-2 w-[33rem] mt-2 placeholder:pl-2 placeholder:text-blue-400 pl-2  rounded' type="text" name="product_name" onChange={(e) => { setproduct_name(e.target.value) }} placeholder='Product Name' value={product_name} id="" />
+                        <input className='border border-slate-400 py-2 w-[33rem] mt-6 dark:bg-zinc-600 dark:border-none dark:placeholder:text-white dark:placeholder:opacity-50 placeholder:pl-2 placeholder:text-blue-400 pl-2  rounded' type="text" name="product_name" onChange={(e) => { setproduct_name(e.target.value) }} placeholder='Product Name' value={product_name} id="" />
                     </div><br /><br />
                     <div className='ml-2'>
 
@@ -68,16 +68,16 @@ Edit Product
                         }} id="" />
                     </div><br /><br />
                     <div className='mx-2'>
-                        <textarea className='border border-slate-400 py-2 w-[33rem] resize-none placeholder:pl-2 placeholder:text-blue-400 pl-2  rounded' name="description" id="" onChange={(e) => { setdescription(e.target.value) }} placeholder='Description' value={description} cols="30" rows="3"></textarea>
+                        <textarea className='border dark:bg-zinc-600 dark:border-none dark:placeholder:text-white dark:placeholder:opacity-50 border-slate-400 py-2 w-[33rem] resize-none placeholder:pl-2 placeholder:text-blue-400 pl-2  rounded' name="description" id="" onChange={(e) => { setdescription(e.target.value) }} placeholder='Description' value={description} cols="30" rows="3"></textarea>
                     </div><br /><br />
                     <div className='mx-2'>
-                        <input type="text" className='border border-slate-400 py-2 w-[33rem] placeholder:pl-2 placeholder:text-blue-400 pl-2  rounded' name="price" id="" onChange={(e) => { setprice(e.target.value) }} value={price} placeholder='Price' />
+                        <input type="text" className='dark:bg-zinc-600 dark:border-none dark:placeholder:text-white dark:placeholder:opacity-50 border border-slate-400 py-2 w-[33rem] placeholder:pl-2 placeholder:text-blue-400 pl-2  rounded' name="price" id="" onChange={(e) => { setprice(e.target.value) }} value={price} placeholder='Price' />
                     </div><br /><br />
                     <div className='mx-2'>
-                        <input type="number" className='border border-slate-400 outline-none py-2 w-[33rem] placeholder:pl-2 placeholder:text-blue-400 pl-2  rounded' name="stock" onChange={(e) => { setstock(e.target.value) }} id="" value={stock} placeholder='Stock' />
+                        <input type="number" className='dark:bg-zinc-600 dark:border-none dark:placeholder:text-white dark:placeholder:opacity-50 border border-slate-400 outline-none py-2 w-[33rem] placeholder:pl-2 placeholder:text-blue-400 pl-2  rounded' name="stock" onChange={(e) => { setstock(e.target.value) }} id="" value={stock} placeholder='Stock' />
                     </div><br /><br />
                     <div className='place-self-center mb-10'>
-                        <input type="submit" className='bg-black hover:bg-opacity-75 text-white font-bold py-1 px-28 cursor-pointer border border-blue-700 rounded' onClick={sendRequest} value="Update" />
+                        <input type="submit" className='bg-black hover:bg-opacity-75 text-white font-bold py-1 px-28 cursor-pointer border dark:bg-blue-600 border-blue-700 rounded' onClick={sendRequest} value="Update" />
                     </div>
                 </div>
             </form>

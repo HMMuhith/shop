@@ -107,25 +107,25 @@ function failing(){
 
   return (
     <>
-    <div className='flex justify-center items-center mb-24'>
+    <div className='flex justify-center  items-center mb-24'>
        <div className="w-full max-w-xs mt-14">
        
-        <form noValidate className='bg-white shadow-[1px_1px_8px_2px_rgba(0,0,0,0.1)] border-2  px-8 pt-6 pb-8 mb-4' onSubmit={submit}>
-          <div>
+        <form noValidate className='bg-white shadow-[1px_1px_8px_2px_rgba(0,0,0,0.1)] border-2 dark:border-none dark:bg-zinc-900 dark:rounded px-8 pt-6 pb-8 mb-4' onSubmit={submit}>
+          <div className='dark:bg-zinc-700 dark:text-white'>
 
-            <input type="email"  className='shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="email" onChange={handleUnit} value={user.email} placeholder='Email' required />
+            <input type="email"  className='shadow dark:bg-zinc-600 dark:text-white bg-white dark:border-none dark:rounded appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight dark:focus:outline-none focus:outline-none focus:shadow-outline' name="email" onChange={handleUnit} value={user.email} placeholder='Email' required />
              {validator.isEmpty(user.email) && <span className='text-red-500'>{error.emailempty}</span> || !validator.isEmail(user.email) && <span className='text-red-500'>{error.emailat}</span>}
            
           </div><br />
           <div>
 
-            <input type="password" className='shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="password" onChange={handleUnit} value={user.password} placeholder='Password' required />
+            <input type="password" className='dark:border-none dark:bg-zinc-600 shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' name="password" onChange={handleUnit} value={user.password} placeholder='Password' required />
             {validator.isEmpty(user.password) && <span className='text-red-500'>{error.password}</span>}
           </div><br /><br />
         
           <div className='flex justify-center items-center'>
 
-            <input type="submit" className='bg-black hover:bg-opacity-75 text-white text-base font-semibold py-1 px-20 cursor-pointer border border-blue-700 rounded' disabled={isLoading} name='submit' value='sign in' />
+            <input type="submit" className='bg-black dark:bg-blue-600 dark:text-white hover:bg-opacity-75 text-white text-base font-semibold py-1 px-20 cursor-pointer border border-blue-700 rounded' disabled={isLoading} name='submit' value='Log in' />
 
           </div><br />
           <div className='flex justify-center items-center'>

@@ -25,7 +25,7 @@ const Checkout=({step1,step2,step3,step4})=> {
 
         <div className='lg:p-0.5 p-0.5'>
 
-        {step4?(<NavLink to={'/order'} className='lg:font-semibold lg:text-sm font-semibold text-xs' >Placeorder</NavLink>):(<NavLink  className='opacity-75lg:text-sm text-sm lg:opacity-75 font-medium lg:font-medium'>Placeorder</NavLink>)}
+        {step4?(<NavLink to={'/order'} className='lg:font-semibold lg:text-sm font-semibold text-xs' >Placeorder</NavLink>):(<NavLink  className='opacity-75 lg:text-sm text-sm lg:opacity-75 font-medium lg:font-medium'>Placeorder</NavLink>)}
         
         </div>
 

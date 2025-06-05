@@ -13,10 +13,15 @@ const RootLayOut = () => {
       elem?.remove()
     },9000)
     },[])
+
+    const test=()=>{
+      const elem=document.getElementById('timeout')
+      elem.remove()
+    }
   return (
     <>
     <div>
-    <div id="timeout" className="fixed top-0 z-40"><TimeOut/></div>
+    <div id="timeout" className="fixed top-0 z-40"><TimeOut ontest={test}/></div>
 
    <Header/>
    <Scroll/>

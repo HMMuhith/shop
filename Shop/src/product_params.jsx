@@ -70,26 +70,27 @@ const ProductParams = () => {
            { isLoading? <Loader/> : error? (
             <div>{error?.data?.message|| error.error}</div>
            )
-           : <div className='rounded grid grid-cols-8 w-[70rem] ml-32 mt-7'>
+           : 
+           <div className='lg:rounded  sm:grid sm:align-middle sm:justify-center sm:grid-rows-2 sm:gap-2 sm:ml-0 sm:w-auto lg:grid lg:grid-cols-8 lg:w-[70rem] lg:ml-32 lg:mt-7'>
 
-                <div className='shrink col-span-4 bg-cover border border-zinc-300 flex justify-center items-center rounded'>
+                <div className='lg:shrink lg:col-span-4 lg:bg-cover sm:m-3 sm:col-span-8 sm:border sm:border-slate-300 lg:border dark:border-none dark:bg-zinc-900 lg:border-zinc-300 lg:flex lg:justify-center lg:items-center lg:rounded'>
                     <img key={data?._id} src={data && `/BackendImage/${data?.image}`} alt=""  className='bg-slate-800 object-center bg-blend-darken hover:bg-red-700' />
 
                 </div>
-                <div className='grid grid-rows-3 h-[19rem] col-start-9 rounded'>
-                                        <div className='text-2xl mt-3 font-bold text-blue-900 block font-poppins ' >
-                                            <p className='text-center'>{data?.product_name}</p>
+                <div className='lg:grid lg:grid-rows-3 sm:border sm:m-3 sm:border-slate-300 sm:col-span-8 dark:bg-zinc-900 dark:border-none lg:border lg:h-[19rem]  sm:col-start-1 sm:row-start-2 lg:row-start-auto lg:col-start-9  lg:rounded'>
+                                        <div className='text-2xl mt-3 font-bold text-blue-900 dark:text-white block font-poppins ' >
+                                            <p className='text-center '>{data?.product_name}</p>
                                         </div>
-                                        <div className='text-xl mt-1.5 font-semibold  block font-poppins ' >
+                                        <div className='text-xl mt-1.5 px-3 font-semibold dark:text-teal-400  block font-poppins ' >
                                             <p className='text-center'>{data?.description}</p>
                                         </div>
                                  <div>
                                 <div className='flex justify-center h-[2rem]'>
-                                                    <div>
+                                                    <div className='dark:text-pink-600'>
                                                         <p className='font-medium'>Quantity</p>
                                                     </div>
                                                     <div className='mx-4 rounded'>
-                                                        {data?.stock > 0 && (<select className='bg-slate-800 font-extralight text-xs text-white rounded' value={quantity} onChange={handler} >{[...Array(data?.stock).keys()].map((x) => {
+                                                        {data?.stock > 0 && (<select className='bg-slate-950 font-extralight dark:text-white text-xs text-white rounded' value={quantity} onChange={handler} >{[...Array(data?.stock).keys()].map((x) => {
 
                                                             return <option key={x + 1} value={x + 1}>
                                                                 {x + 1}
@@ -103,16 +104,16 @@ const ProductParams = () => {
                             </div>
                             </div>
                                     <div className=''>
-                                                    <div className='flex justify-center items-center '>
-                                                        <button type="button" disabled={data?.stock === 0} onClick={handleAddToCart} className='bg-black hover:bg-opacity-75 text-white text-base font-semibold py-1 px-28 border border-blue-700 rounded'>Add to cart</button>
+                                                    <div className=' pb-4 flex justify-center items-center '>
+                                                        <button type="button" disabled={data?.stock === 0} onClick={handleAddToCart} className='bg-black hover:bg-opacity-75 text-white text-base font-semibold dark:bg-blue-600 py-1 px-28 border border-blue-700 rounded'>Add to cart</button>
                                                     </div>
                                                     {userinfo?.isAdmin &&(
-                                            <div className='flex justify-evenly items-center mt-2'>
+                                            <div className='flex justify-evenly items-center mt-2 mb-4'>
                                                             <div className=''>
                                                                 <button className='bg-green-700 hover:bg-opacity-75 text-white text-sm font-semibold py-1 px-12 border rounded' onClick={() => { navigate(`/product/${data?._id}/edit`) }}>Edit</button><br />
                                                             </div>
                                                             <div className=''>
-                                                                <button className='bg-red-700 hover:bg-opacity-75 text-white text-sm font-semibold py-1 px-10 rounded' onClick={deletehandler}>Delete</button><br />
+                                                                <button className=' bg-red-700 hover:bg-opacity-75 text-white text-sm font-semibold py-1 px-10 rounded' onClick={deletehandler}>Delete</button><br />
                                                             </div>
                                             </div>)
 }
@@ -120,18 +121,20 @@ const ProductParams = () => {
                 </div>
             </div> 
             }
-            <div className='m-auto flex justify-center'>
-                        <div className='mt-5 border border-zinc-300 w-[24rem] rounded'>
+            <div className='lg:m-auto lg:flex lg:justify-center sm:grid sm:w-auto sm:justify-center sm:align-middle sm:rounded sm:grid-rows-2 sm:grid-cols-1'>
+                        <div className='sm:col-span-2 sm:w-auto sm:m-3 mt-5 dark:border-none dark:bg-zinc-900 lg:border lg:border-zinc-300 lg:w-[24rem] lg:rounded'>
                             {data?.reviews.length === 0 ? (<p className='text-center'>No reviews found</p>) : data?.reviews.map((review) => <>
-                                <strong className='pl-2 text-blue-800 font-bold font-poppins'>{review.name}</strong>
+                            <div className='dark:bg-zinc-700 bg-slate-200 my-3 mx-4 rounded-md dark:border-none border border-slate-200'>
+                                <strong className='lg:pl-2 sm:p-2 lg:text-blue-600  font-extrabold font-poppins'>{review.name}</strong>
                                 <div className='flex'>
                                 {[...Array(review.rating)].map(star=><IoIosStar className='text-yellow-600 text-lg pl-2'/>)}
                                 </div>
-                                <p className='pl-2 font-IBM font-semibold'>{review.comment}</p>
+                                <p className='pl-2 font-IBM font-semibold pb-2'>{review.comment}</p>
+                                </div>
                             </>)}
                         </div>
 
-                        <div className='border border-zinc-300 ml-6 mt-6 w-[30rem] rounded'>
+                        <div className='lg:border lg:border-zinc-300 sm:m-3 dark:border-none sm:w-auto dark:bg-zinc-900 lg:ml-6 lg:mt-6 lg:w-[30rem] lg:rounded'>
                         <h2 className='text-xl font-bold  ml-4 '>Write a customer review</h2>
                                 {userinfo?.isAdmin===false?
                             <form action="" onSubmit={submit}>
@@ -148,7 +151,7 @@ const ProductParams = () => {
                                 )})
                                 }
                                 </div>
-                                <select className='mt-3 ml-4 border text-sm rounded text-white bg-slate-800 outline-none' name="rating" value={rating} onChange={(e) => setrating(Number(e.target.value))}>
+                                <select className='mt-3 ml-4 border dark:border-none dark:bg-zinc-950 text-sm rounded text-white bg-slate-800 outline-none' name="rating" value={rating} onChange={(e) => setrating(Number(e.target.value))}>
                                     <option value="">Select</option>
                                     <option className=''  value="1">1-Poor</option>
                                     <option className='' value="2">2-Fair</option>
@@ -156,7 +159,7 @@ const ProductParams = () => {
                                     <option className='' value="4">4-Very good</option>
                                     <option className='rounded-lg' value="5">5-Excellent</option>
                                 </select><br /><br />
-                                <textarea name="comment" className='focus:ring-2 focus:ring-offset-1 focus:ring-blue-600 focus:border-none ml-4 resize-none caret-blue-600 outline-none border pl-2 rounded' cols={30} rows={3} value={comment} placeholder='Comment' onChange={(e) => setcomment(e.target.value)}></textarea><br /><br />
+                                <textarea name="comment" className='dark:bg-zinc-600 dark:border-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-600 focus:border-none ml-4 resize-none caret-blue-600 outline-none border pl-2 rounded' cols={30} rows={3} value={comment} placeholder='Comment' onChange={(e) => setcomment(e.target.value)}></textarea><br /><br />
                                 <input type="submit" className='cursor-pointer ml-4 mb-2 bg-black hover:bg-opacity-75 text-white text-sm font-semibold py-1 px-3 border border-blue-700 rounded' value="Submit" />
                                 
                             </form> :<p className='py-4 text-center'>Please <Link to='/login' className='underline underline-offset-4 decoration-2 font-semibold decoration-blue-600'>sign in</Link> to post a review </p>}
