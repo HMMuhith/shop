@@ -42,7 +42,7 @@ app.use(session(
 }))
 
 app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin','https://shop-2yzds190k-muhiths-projects.vercel.app')
+    res.setHeader('Access-Control-Allow-Origin','https://shop-lilac-ten.vercel.app')
     res.setHeader('Access-Control-Allow-Headers','X-Requested-With, X-HTTP-Method-Override,Origin,Authorization,Content-Type, Accept')
     res.setHeader('Access-Control-Allow-Credentials',true)
     res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE,OPTIONS')
