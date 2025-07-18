@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useGetProductsQuery } from './productshopSlice'
 import { useNavigate, useParams } from 'react-router-dom'
 import Pagination from './pagination'
@@ -11,13 +11,25 @@ const Main = () => {
     const { keyword, pagenumber } = useParams()
     const navigate = useNavigate()
     const { data,isLoading,error } = useGetProductsQuery({ keyword, pagenumber })
+    const [position,setposition]=useState(false)
 
-
+const passhandler=()=>{
+setposition((position)=>!position)
+}
     return (
         <> 
             <Title title='Shop' />
             <Image/>
-            
+            <div className='ml-[1250px] absolute top-[300px]'>
+            <div onClick={passhandler} className='w-[45px] h-[45px] bg-round rounded-full  z-50 cursor-pointer overflow-hidden flex relative justify-center items-center text-center text-[10px]'>Email & Pass </div>
+             {position?
+            <div className='flex mr-3 text-nowrap top-1 bg-position text-white rounded-lg flex-col absolute right-[18px]  opacity-100 transform duration-800 ease-linear translate-x-0'>
+                    <span className='px-7 py-1.5  '>Email: iran@gmail.com  Pass: iran123 </span>
+                </div>:
+                (<div className='flex mr-3 text-nowrap top-1 bg-position text-white rounded-lg flex-col absolute right-[18px]  opacity-0 transform duration-200 ease-linear translate-x-6'>
+                    <span className='px-7 py-1.5 '>Email: iran@gmail.com  Pass: iran123 </span>
+                </div>)}
+                </div>
     { isLoading? 
     <Loader/>: error?
    ( <div>{error?.data?.message || error.error}</div>  ) : 
