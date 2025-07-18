@@ -86,8 +86,6 @@ const submit = async (e) => {
 dispatch(Credentials({...response}))
 setstatus({type:'success'})
 testify()
-
-  navigate(redirect)
 }
 
 catch (err){
