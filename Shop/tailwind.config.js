@@ -37,7 +37,9 @@ export default {
       'xl':'1280px',
       '2xl':'1536px'},
       colors:{
-        'blur':'rgba(0,0,0,0.5);'
+        'blur':'rgba(0,0,0,0.5);',
+        'position':'#314158;',
+        'round':'#d4d4d4;'
       }
     },
   },
